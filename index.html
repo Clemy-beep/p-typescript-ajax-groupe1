@@ -5,11 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">All articles</a></li>
+                <li><a href="./public/views/post-article.html">Post article</a></li>
+                <li><a href="./public/views/user-profile.html">User Profile</a></li>
+                <li><a href="./public/views/categories.html">Categories</a></li>
+                <li><a href="./public/views/post-category.html">Post Category</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>All articles</h1>
+    <div id="articles-list"></div>
     <script src="./dist/index.js"></script>
+
 </body>
+<script>
+    $(selector).html(htmlString);
+</script>
 
 </html>
