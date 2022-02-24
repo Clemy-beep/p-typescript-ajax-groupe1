@@ -31,6 +31,7 @@ export class Category {
             success: function (response: any) {
                 console.log(response);
                 console.log("test");
+                window.location.href = "http://127.0.0.1:5555/public/views/categories.html"
             },
             error: function (error) {
                 console.log(error)
