@@ -25,9 +25,9 @@ export class Category {
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
     set name(name) { __classPrivateFieldSet(this, _Category_name, name, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
-    createArticle() { }
-    fetchArticle(id) { }
-    deleteArticle(id) { }
+    createCategory() { }
+    fetchCategory(id) { }
+    deleteCategory(id) { }
 }
 _Category_id = new WeakMap(), _Category_name = new WeakMap(), _Category_isdeleted = new WeakMap();
 //# sourceMappingURL=category.js.map

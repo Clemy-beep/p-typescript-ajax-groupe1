@@ -12,7 +12,8 @@ export default class FetchMultiple {
                     response.forEach(((article: Article) => {
                         let newarticle = new Article(article.id, article.title, article.content, article.userId, article.isdeleted);
                         let html = `<a style="display:block" href="./public/views/article.html?id=${newarticle.id}">${newarticle.title}</a>`;
-                        $('#articles-list')?.append(html);
+                        if (!article.isdeleted)
+                            $('#articles-list')?.append(html);
                     }));
                 } else $("#articles-list").html('No articles found.');
             },
