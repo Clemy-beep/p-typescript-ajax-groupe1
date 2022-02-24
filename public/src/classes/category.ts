@@ -23,7 +23,7 @@ export class Category {
         console.log("test");
         $.ajax({
             type: "POST",
-            url: "https://api.blog.quidam.re/api/postCategorie.php?label="+label,
+            url: "https://api.blog.quidam.re/api/postCategorie.php?label=" + label,
             dataType: "JSON",
             data: {
                 "label": label,
@@ -40,6 +40,24 @@ export class Category {
     }
 
     deleteCategory(id: number) {
-
+        let conf = confirm("Are you sure you want to delete this category ?")
+        if (conf)
+            $.ajax({
+                type: "POST",
+                url: "https://api.blog.quidam.re/api/deleteCategorie.php",
+                dataType: "JSON",
+                data: {
+                    'categorie_id': id
+                },
+                success: function (response: any) {
+                    console.log(response);
+                    console.log("test");
+                    $("#response").html('Category deleted');
+                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html"
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
     }
 }

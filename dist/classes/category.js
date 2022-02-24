@@ -37,6 +37,7 @@ export class Category {
             success: function (response) {
                 console.log(response);
                 console.log("test");
+                window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
             },
             error: function (error) {
                 console.log(error);
@@ -44,6 +45,25 @@ export class Category {
         });
     }
     deleteCategory(id) {
+        let conf = confirm("Are you sure you want to delete this category ?");
+        if (conf)
+            $.ajax({
+                type: "POST",
+                url: "https://api.blog.quidam.re/api/deleteCategorie.php",
+                dataType: "JSON",
+                data: {
+                    'categorie_id': id
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log("test");
+                    $("#response").html('Category deleted');
+                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
     }
 }
 _Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();
