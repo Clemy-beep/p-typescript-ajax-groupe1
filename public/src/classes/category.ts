@@ -17,9 +17,9 @@ export class Category {
     set name(name:string) { this.#name = name}
     set isdeleted(isdeleted:boolean) { this.#isdeleted = isdeleted}
 
-    createArticle(){}
+    createCategory(){}
 
-    fetchArticle(id:number){}
+    fetchCategory(id:number){}
 
-    deleteArticle(id:number){}
+    deleteCategory(id:number){}
 }
