@@ -1,13 +1,3 @@
-"use strict";
-function getAllArticles() {
-    $.ajax({
-        type: "GET",
-        url: "https://api.blog.quidam.re/api/getArticles.php",
-        dataType: "JSON",
-        success: function (response) {
-            console.log(response);
-        }
-    });
-}
-getAllArticles();
+import FetchMultiple from "./classes/fetchAll.js";
+FetchMultiple.fetchArticles();
 //# sourceMappingURL=index.js.map
