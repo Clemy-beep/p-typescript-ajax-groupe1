@@ -23,18 +23,19 @@ export class Category {
         console.log("test");
         $.ajax({
             type: "POST",
-            url: "https://api.blog.quidam.re/api/postCategorie.php",
+            url: "https://api.blog.quidam.re/api/postCategorie.php?label="+label,
             dataType: "JSON",
             data: {
-                "label" : label,
+                "label": label,
             },
-                success: function (response: any) {
-                    console.log("test");
-                },
-                error: function (error){
-                    console.log(error)
-                }
-            });
+            success: function (response: any) {
+                console.log(response);
+                console.log("test");
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
     }
 
     deleteCategory(id: number) {
