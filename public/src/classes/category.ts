@@ -1,25 +1,23 @@
 export class Category {
-    #id : number;
-    #label:string;
-    #isdeleted:boolean;
+    #id: number;
+    #name: string;
+    #isdeleted: boolean;
 
-    constructor(id?: number, label?: string, isdeleted?: boolean) {
+    constructor(id?: number, name?: string, isdeleted?: boolean) {
         this.#id = id ?? 0;
-        this.#label = label ?? "";
+        this.#name = name ?? "";
         this.#isdeleted = isdeleted ?? false;
     }
 
     get id() { return this.#id; }
-    get label() { return this.#label; }
+    get name() { return this.#name; }
     get isdeleted() { return this.#isdeleted; }
 
-    set id(id:number) { this.#id = id;}
-    set label(label:string) { this.#label = label}
-    set isdeleted(isdeleted:boolean) { this.#isdeleted = isdeleted}
+    set id(id: number) { this.#id = id; }
+    set name(name: string) { this.#name = name }
+    set isdeleted(isdeleted: boolean) { this.#isdeleted = isdeleted }
 
-    createCategory(){}
+    createCategory(label: string) { }
 
-    fetchCategory(id:number){}
-
-    deleteCategory(id:number){}
+    deleteCategory(id: number) { }
 }
