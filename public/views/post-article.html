@@ -27,8 +27,13 @@
         <input type="text" placeholder="title" name="title" id="title" required>
         <input type="text" placeholder="author" name="author" id="author" required>
         <input type="textarea" placeholder="Votre article.." name="article" id="article" required>
+        <select name="categories" id="categories" required>
+            <option value="" disabled selected>Choisissez une catégorie </option>
+            
+        </select>
         <input type="submit" name="submit" id="submit-art">
     </form>
+    <script src="../../dist/select.js" type="module"></script>
 </body>
 
 </html>

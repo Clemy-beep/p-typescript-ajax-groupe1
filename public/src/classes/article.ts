@@ -1,4 +1,4 @@
-
+import FetchCategorie from "../classes/select.js";
 export default class Article {
     #id : number;
     #title:string;
