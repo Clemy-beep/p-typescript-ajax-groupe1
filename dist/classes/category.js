@@ -9,25 +9,25 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Category_id, _Category_name, _Category_isdeleted;
+var _Category_id, _Category_label, _Category_isdeleted;
 export class Category {
-    constructor(id, name, isdeleted) {
+    constructor(id, label, isdeleted) {
         _Category_id.set(this, void 0);
-        _Category_name.set(this, void 0);
+        _Category_label.set(this, void 0);
         _Category_isdeleted.set(this, void 0);
         __classPrivateFieldSet(this, _Category_id, id ?? 0, "f");
-        __classPrivateFieldSet(this, _Category_name, name ?? "", "f");
+        __classPrivateFieldSet(this, _Category_label, label ?? "", "f");
         __classPrivateFieldSet(this, _Category_isdeleted, isdeleted ?? false, "f");
     }
     get id() { return __classPrivateFieldGet(this, _Category_id, "f"); }
-    get name() { return __classPrivateFieldGet(this, _Category_name, "f"); }
+    get label() { return __classPrivateFieldGet(this, _Category_label, "f"); }
     get isdeleted() { return __classPrivateFieldGet(this, _Category_isdeleted, "f"); }
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
-    set name(name) { __classPrivateFieldSet(this, _Category_name, name, "f"); }
+    set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
-    createArticle() { }
-    fetchArticle(id) { }
-    deleteArticle(id) { }
+    createCategory() { }
+    fetchCategory(id) { }
+    deleteCategory(id) { }
 }
-_Category_id = new WeakMap(), _Category_name = new WeakMap(), _Category_isdeleted = new WeakMap();
+_Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();
 //# sourceMappingURL=category.js.map
