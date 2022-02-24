@@ -43,6 +43,7 @@ export default class FetchMultiple {
                             let id = newcategorie.id;
                             newcategorie.deleteCategory(id);
                         });
+
                     });
                 }
                 else

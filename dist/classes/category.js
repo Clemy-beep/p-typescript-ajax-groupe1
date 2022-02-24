@@ -25,6 +25,7 @@ export class Category {
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
     set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
+
     createCategory(label) {
         console.log("test");
         $.ajax({
@@ -65,6 +66,7 @@ export class Category {
                 }
             });
     }
+
 }
 _Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();
 //# sourceMappingURL=category.js.map
