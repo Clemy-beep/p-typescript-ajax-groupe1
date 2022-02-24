@@ -21,6 +21,8 @@ export default class User {
     get username() { return __classPrivateFieldGet(this, _User_username, "f") ?? ""; }
     set username(value) { __classPrivateFieldSet(this, _User_username, value, "f"); }
     set userId(userId) { __classPrivateFieldSet(this, _User_userId, userId, "f"); }
+    fetchUser(id) {
+    }
 }
 _User_userId = new WeakMap(), _User_username = new WeakMap();
 //# sourceMappingURL=user.js.map
