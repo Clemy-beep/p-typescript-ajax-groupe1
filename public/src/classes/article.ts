@@ -74,6 +74,9 @@ export default class Article {
                 type: "POST",
                 url: "https://api.blog.quidam.re/api/deleteArticle.php?id=" + id,
                 dataType: "JSON",
+                data: {
+                    'user_id': 7
+                },
                 success: function (response: any) {
                     console.log(response);
                     window.location.href = "http://127.0.0.1:5555/index.html"
