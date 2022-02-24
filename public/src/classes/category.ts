@@ -3,9 +3,9 @@ export class Category {
     #label: string;
     #isdeleted: boolean;
 
-    constructor(id?: number, name?: string, isdeleted?: boolean) {
+    constructor(id?: number, label?: string, isdeleted?: boolean) {
         this.#id = id ?? 0;
-        this.#label = name ?? "";
+        this.#label = label ?? "";
         this.#isdeleted = isdeleted ?? false;
     }
 
@@ -14,10 +14,30 @@ export class Category {
     get isdeleted() { return this.#isdeleted; }
 
     set id(id: number) { this.#id = id; }
-    set label(name: string) { this.#label = name }
+    set label(label: string) { this.#label = label }
     set isdeleted(isdeleted: boolean) { this.#isdeleted = isdeleted }
 
-    createCategory(label: string) { }
 
-    deleteCategory(id: number) { }
+
+    createCategory(label: string) {
+        console.log("test");
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re/api/postCategorie.php",
+            dataType: "JSON",
+            data: {
+                "label" : label,
+            },
+                success: function (response: any) {
+                    console.log("test");
+                },
+                error: function (error){
+                    console.log(error)
+                }
+            });
+    }
+
+    deleteCategory(id: number) {
+
+    }
 }
