@@ -11,22 +11,21 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _Category_id, _Category_label, _Category_isdeleted;
 export class Category {
-    constructor(id, label, isdeleted) {
+    constructor(id, name, isdeleted) {
         _Category_id.set(this, void 0);
         _Category_label.set(this, void 0);
         _Category_isdeleted.set(this, void 0);
         __classPrivateFieldSet(this, _Category_id, id ?? 0, "f");
-        __classPrivateFieldSet(this, _Category_label, label ?? "", "f");
+        __classPrivateFieldSet(this, _Category_label, name ?? "", "f");
         __classPrivateFieldSet(this, _Category_isdeleted, isdeleted ?? false, "f");
     }
     get id() { return __classPrivateFieldGet(this, _Category_id, "f"); }
     get label() { return __classPrivateFieldGet(this, _Category_label, "f"); }
     get isdeleted() { return __classPrivateFieldGet(this, _Category_isdeleted, "f"); }
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
-    set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
+    set label(name) { __classPrivateFieldSet(this, _Category_label, name, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
-    createCategory() { }
-    fetchCategory(id) { }
+    createCategory(label) { }
     deleteCategory(id) { }
 }
 _Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();

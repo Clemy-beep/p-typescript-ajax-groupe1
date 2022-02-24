@@ -52,10 +52,10 @@ export default class Article {
                 article.title = response.title;
                 article.content = response.content;
                 article.isdeleted = response.isdeleted;
-                response.categories.forEach((category) => {
+                article.categories = response.categories;
+                __classPrivateFieldGet(article, _Article_categories, "f").forEach((category) => {
                     console.log(category);
                 });
-                console.log(article.title ?? "o");
                 if (!article.isdeleted) {
                     $("#article-title").html(article.title);
                     $("#article-content").html(article.content);
@@ -68,8 +68,24 @@ export default class Article {
             }
         });
     }
-    editArticle(id) { }
-    deleteArticle(id) { }
+    editArticle(id) {
+    }
+    deleteArticle(id) {
+        let conf = confirm("Are you sure you want to delete this article ?");
+        if (conf)
+            $.ajax({
+                type: "POST",
+                url: "https://api.blog.quidam.re/api/deleteArticle.php?id=" + id,
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                    window.location.href = "http://127.0.0.1:5555/index.html";
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
 }
 _Article_id = new WeakMap(), _Article_title = new WeakMap(), _Article_content = new WeakMap(), _Article_userId = new WeakMap(), _Article_categories = new WeakMap(), _Article_isdeleted = new WeakMap();
 //# sourceMappingURL=article.js.map
