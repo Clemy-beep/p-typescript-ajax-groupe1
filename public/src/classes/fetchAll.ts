@@ -37,7 +37,11 @@ export default class FetchMultiple {
                     console.log(response);
                     response.forEach((Categorie: Category) => {
                         let newcategorie = new Category(Categorie.id, Categorie.label, Categorie.isdeleted);
-                        let html = `<div>${newcategorie.label}<button id="delete-category${newcategorie.id}">Delete<input id="category-id" type="hidden" value="${newcategorie.id}"></button></div>`;
+                        let html =
+                        `<div class="categorydiv">
+                            <a class="button"><span>${newcategorie.label}</span></a>
+                            <button class="delete-category" id="delete-category${newcategorie.id}"><span>Delete</span><input id="category-id" type="hidden" value="${newcategorie.id}"></button>
+                        </div>`;
                         $('#category-list')?.append(html);
                         $(document).on('click', `#delete-category${newcategorie.id}`, function (e: Event) {
                             console.log('help');
