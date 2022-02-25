@@ -57,7 +57,7 @@ export default class FetchMultiple {
                     console.log(response);
                     response.forEach((utilisateur : User) => {
                         let newUser = new User(utilisateur.userId);
-                        let html = `<a style="display:block" href="./public/views/categories.html?id=${utilisateur.userId}">${utilisateur.username}</a>`;
+                        let html = `<a style="display:block" href="./public/views/user-profile.html?id=${utilisateur.userId}">${utilisateur.username}</a>`;
                         $('#Username')?.append(html);
                     });
                 } else $('#Username').html('no user found');
