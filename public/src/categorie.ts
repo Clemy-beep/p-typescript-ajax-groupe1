@@ -10,6 +10,3 @@ $('#submit-cat').on('submit', function (e: Event) {
     category.createCategory(category.label);
 })
 
-
-let btn = document.getElementById('delete-category');
-

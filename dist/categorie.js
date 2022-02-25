@@ -7,6 +7,4 @@ $('#submit-cat').on('submit', function (e) {
     category.label = $("category").val();
     category.createCategory(category.label);
 });
-let btn = document.getElementById('delete-category');
-
 //# sourceMappingURL=categorie.js.map
