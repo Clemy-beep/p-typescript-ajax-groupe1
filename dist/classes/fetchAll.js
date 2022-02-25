@@ -1,5 +1,6 @@
 import Article from "./article.js";
 import { Category } from "./category.js";
+import User from "./user.js";
 export default class FetchMultiple {
     static fetchArticles() {
         $.ajax({
@@ -41,6 +42,29 @@ export default class FetchMultiple {
                 }
                 else
                     $('#category-list').html('No categories found');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    static getUser() {
+        $.ajax({
+            type: "GET",
+            url: "https://api.blog.quidam.re/api/getUser.php",
+            dataType: "JSON",
+            success: function (response) {
+                console.log(response);
+                if (response.length > 0) {
+                    console.log(response);
+                    response.forEach((utilisateur) => {
+                        let newUser = new User(utilisateur.userId);
+                        let html = `<a style="display:block" href="./public/views/categories.html?id=${utilisateur.userId}">${utilisateur.username}</a>`;
+                        $('#Username')?.append(html);
+                    });
+                }
+                else
+                    $('#Username').html('no user found');
             },
             error: function (error) {
                 console.log(error);
