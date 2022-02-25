@@ -1,3 +1,3 @@
-import FetchMultiple from "./classes/fetchAll.js";
-FetchMultiple.getUser();
+import User from "./classes/user.js";
+User.getUser();
 //# sourceMappingURL=profile.js.map

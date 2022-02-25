@@ -1,3 +1,3 @@
-import FetchMultiple from "./classes/fetchAll.js";
+import User from "./classes/user.js";
 
-FetchMultiple.getUser();
+User.getUser();
