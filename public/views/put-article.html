@@ -14,13 +14,31 @@
         <nav>
             <ul>
                 <li><a href="../../index.html">All articles</a></li>
-                <li><a href="./post-article.html">Post article</a></li>
-                <li><a href="./user-profile.html">User Profile</a></li>
-                <li><a href="./categories.html">Categories</a></li>
-                <li><a href="./post-category.html">Post Category</a></li>
+                <li><a href="post-article.html">Post article</a></li>
+                <li><a href="user-profile.html">User Profile</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="post-category.html">Post Category</a></li>
             </ul>
         </nav>
     </header>
+    <form action="#" method="POST" id="modify">
+        <h1>modify an Article</h1>
+        <div>
+            <input hidden name="article-id" placeholder="article-id" value="">
+        </div>
+        <div>
+            <textarea name="titre" placeholder="titre" value=""></textarea>
+        </div>
+        <div>
+            <textarea name="content" placeholder="content" value=""></textarea>
+        </div>
+        <div>
+            <input  name="user_id" placeholder="user_id" value="">
+        </div>
+        <div>
+            <input type="submit" value="ENREGISTRER">
+        </div>
+    </form>
 </body>
-
+<script src="../../dist/classes/article.js"></script>
 </html>
