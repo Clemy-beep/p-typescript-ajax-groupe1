@@ -26,7 +26,6 @@ export class Category {
     set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
     createCategory(label) {
-        console.log("test");
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/postCategorie.php",
@@ -35,7 +34,7 @@ export class Category {
                 "label": label,
             },
             success: function (response) {
-                console.log("test");
+                console.log(response);
             },
             error: function (error) {
                 console.log(error);

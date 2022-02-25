@@ -1,5 +1,5 @@
 import { Category } from "../classes/category.js";
-$("#submit-cat").on("submit", function (e) {
+$("#submit-cat").on("click", function (e) {
     e.preventDefault();
     let category = new Category();
     category.label = $("#category").val();

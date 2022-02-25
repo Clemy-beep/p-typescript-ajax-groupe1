@@ -20,7 +20,6 @@ export class Category {
 
 
     createCategory(label: string) {
-        console.log("test");
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/postCategorie.php",
@@ -29,7 +28,7 @@ export class Category {
                 "label" : label,
             },
                 success: function (response: any) {
-                    console.log("test");
+                    console.log(response);
                 },
                 error: function (error){
                     console.log(error)

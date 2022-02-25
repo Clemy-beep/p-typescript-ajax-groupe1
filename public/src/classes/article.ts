@@ -28,9 +28,33 @@ export default class Article {
 
     createArticle() {}
 
-    fetchArticle(id: number) {}
+    fetchArticle(id: number) { }
 
-    editArticle(id: number) { }
+    editArticle(id: number) {
+        $.ajax({
+            type: "GET",
+            url: "https://api.blog.quidam.re/api/postArticle.php" + id,
+            dataType: "JSON",
+            success: function (response: any) {
+                console.log(response);
+                if (response.length > 0) {
+                    console.log(response);
+                    response.forEach((article: Article) => {
+                        let newArticle = new Article(article.id, article.title, article.content, article.userId ,article.isdeleted);
+                        let html = `
+                            <input type="text" name="title" id="title" value="${newArticle.title}" required>
+                            <input type="text" name="content" id="content" value="${newArticle.content}" required>
+                        `;
+                        $('#category-list')?.append(html);
+                    });
+                } else $('#category-list').html('No categories found');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+     
 
     deleteArticle(id: number) { }
 
