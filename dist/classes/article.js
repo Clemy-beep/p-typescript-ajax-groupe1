@@ -124,7 +124,12 @@ export default class Article {
                 },
                 success: function (response) {
                     console.log(response);
-                    window.location.href = "http://127.0.0.1:5555/index.html";
+                    if (Array.isArray(response)) {
+                        alert("Article deleted successfully");
+                        window.location.href = "http://127.0.0.1:5555/index.html";
+                    }
+                    else
+                        alert("Article not deleted. An error occurred.");
                 },
                 error: function (error) {
                     console.log(error);
