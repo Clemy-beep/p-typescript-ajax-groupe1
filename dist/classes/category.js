@@ -26,21 +26,23 @@ export class Category {
     set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
     createCategory(label) {
+        let formData = new FormData();
+        formData.append('label', label);
         console.log("test");
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/postCategorie.php?label=" + label,
             dataType: "JSON",
-            data: {
-                "label": label,
-            },
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response);
                 console.log("test");
                 if (Array.isArray(response))
-                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
-                else
                     alert("An error occurred.");
+                else
+                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
             },
             error: function (error) {
                 console.log(error);

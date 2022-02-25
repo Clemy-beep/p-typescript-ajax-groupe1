@@ -12,7 +12,7 @@ export default class FetchMultiple {
                     console.log(response);
                     response.forEach(((article) => {
                         let newarticle = new Article(article.id, article.title, article.content, article.userId, article.isdeleted);
-                        let html = `<a style="display:block" href="./public/views/article.html?id=${newarticle.id}">${newarticle.title}</a>`;
+                        let html = `<a class="article-link" style="display:block" href="./public/views/article.html?id=${newarticle.id}">${newarticle.title}</a>`;
                         if (!article.isdeleted)
                             $('#articles-list')?.append(html);
                     }));
