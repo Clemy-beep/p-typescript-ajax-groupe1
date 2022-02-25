@@ -25,7 +25,6 @@ export class Category {
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
     set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
-
     createCategory(label) {
         $.ajax({
             type: "POST",
@@ -36,6 +35,8 @@ export class Category {
             },
             success: function (response) {
                 console.log(response);
+                console.log("test");
+                window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
             },
             error: function (error) {
                 console.log(error);
@@ -54,16 +55,12 @@ export class Category {
                 },
                 success: function (response) {
                     console.log(response);
-                    console.log("test");
-                    $("#response").html('Category deleted');
-                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
                 },
                 error: function (error) {
                     console.log(error);
                 }
             });
     }
-
 }
 _Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();
 //# sourceMappingURL=category.js.map

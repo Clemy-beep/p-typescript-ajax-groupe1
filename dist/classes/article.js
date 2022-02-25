@@ -69,6 +69,35 @@ export default class Article {
         });
     }
     editArticle(id) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re/api/postArticle.php?id=" + id,
+            dataType: "JSON",
+            data: {
+                "user_id": 7,
+                "title": __classPrivateFieldGet(this, _Article_title, "f"),
+                "content": __classPrivateFieldGet(this, _Article_content, "f")
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.length > 0) {
+                    console.log(response);
+                    response.forEach((article) => {
+                        let newArticle = new Article(article.id, article.title, article.content, article.userId, article.isdeleted);
+                        let html = `
+                            <input type="text" name="title" id="title" value="${newArticle.title}" required>
+                            <input type="text" name="content" id="content" value="${newArticle.content}" required>
+                        `;
+                        $('#modify')?.append(html);
+                    });
+                }
+                else
+                    $('#modify').html('No categories found');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     }
     deleteArticle(id) {
         let conf = confirm("Are you sure you want to delete this article ?");

@@ -4,6 +4,11 @@ let id = window.location.search;
 let article = new Article();
 if (id) { article.fetchArticle(); }
 
+$("#article-edit").on("click", function (e: Event) {
+    let id: number = parseInt(window.location.search.split('=')[1]);
+    window.location.href = "http://tp-typescript.local/public/views/put-article.html?id=" + id;
+});
+
 $("#article-delete").on("click", function (e: Event) {
     let id: number = parseInt(window.location.search.split('=')[1]);
     let article = new Article();
