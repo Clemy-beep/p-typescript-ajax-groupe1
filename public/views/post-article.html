@@ -25,12 +25,12 @@
     <form method="post">
         <input type="text" placeholder="title" name="title" id="title" required>
         <input type="number" placeholder="author" name="author" id="author" required><br>
-        <input type="textarea" placeholder="Votre article.." name="article" id="article" required>
-        <input type="submit" name="submit" id="submit-art">
+        <input type="textarea" placeholder="Votre article.." name="content" id="content" required>
+        <select name="category" id="category" required></select>
+        <button id="submit-art">Soumettre un article</button>
     </form>
+    <div id="response"></div>
 </body>
-<script src="../../dist/articles.js" type="module">
-
-</script>
+<script src="../../dist/post-article.js" type="module"></script>
 
 </html>
