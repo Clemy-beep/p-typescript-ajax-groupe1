@@ -8,4 +8,5 @@ $('#submit-cat').on('submit', function (e) {
     category.createCategory(category.label);
 });
 let btn = document.getElementById('delete-category');
+
 //# sourceMappingURL=categorie.js.map

@@ -1,5 +1,6 @@
 import Article from "./article.js";
 import { Category } from "./category.js"
+
 export default class FetchMultiple {
     static fetchArticles() {
         $.ajax({
@@ -42,6 +43,7 @@ export default class FetchMultiple {
                             let id: number = newcategorie.id;
                             newcategorie.deleteCategory(id);
                         });
+
                     });
                 } else $('#category-list').html('No categories found');
             },
