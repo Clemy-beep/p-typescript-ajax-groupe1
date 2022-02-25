@@ -69,7 +69,7 @@ export default class Article {
             url: "https://api.blog.quidam.re/api/getArticle.php?id=" + id,
             dataType: "JSON",
             success: function (response) {
-                var article = new Article();
+                let article = new Article();
                 response = response[0];
                 console.log(response);
                 article.title = response.title;
@@ -90,23 +90,28 @@ export default class Article {
         });
     }
     editArticle(id, title, content, userId) {
+        let formData = new FormData();
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('user_id', userId.toString());
+        formData.append('article_id', id.toString());
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/putArticle.php?id=" + id,
             dataType: "json",
-            contentType: " multipart/form-data",
-            data: {
-                'article_id': id,
-                'title': title,
-                'content': content,
-                'user_id': userId
-            },
+            contentType: false,
+            data: formData,
+            processData: false,
             success: function (response) {
+                console.log(response);
                 let okText = "Article modified successfully";
-                if (Array.isArray(response))
-                    $('#response').html(okText);
-                else
+                if (response.message == "Modification effectué") {
+                    alert(okText);
+                    window.location.href = "http://127.0.0.1:5555/public/views/article.html?id=" + id;
+                }
+                else {
                     $("#response").html('An error occurred');
+                }
             },
             error: function (error) {
                 console.log(error);

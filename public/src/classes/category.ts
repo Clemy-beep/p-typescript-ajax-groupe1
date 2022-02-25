@@ -45,14 +45,16 @@ export class Category {
 
     deleteCategory(id: number) {
         let conf = confirm("Are you sure you want to delete this category ?")
-        if (conf)
+        if (conf) {
+            let formData = new FormData();
+            formData.append('categorie_id', id.toString());
             $.ajax({
                 type: "POST",
                 url: "https://api.blog.quidam.re/api/deleteCategorie.php",
                 dataType: "JSON",
-                data: {
-                    'categorie_id': id
-                },
+                data: formData,
+                processData:false,
+                contentType: false,
                 success: function (response: any) {
                     console.log(response);
                     console.log("test");
@@ -63,5 +65,6 @@ export class Category {
                     console.log(error)
                 }
             });
+        }
     }
 }
