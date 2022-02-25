@@ -55,29 +55,26 @@ export default class Article {
         });
     }
 
-    fetchArticle() {
+    static fetchArticle(): void {
         let id: string = window.location.search.split('=')[1];
-        console.log(id);
         $.ajax({
             type: "GET",
             url: "https://api.blog.quidam.re/api/getArticle.php?id=" + id,
             dataType: "JSON",
             success: function (response: any) {
+                var article = new Article();
                 response = response[0];
-                console.log(response);
-                let article = new Article(response.id, response.title, response.content, response.user_id, response.isdeleted, response.categories);
                 article.title = response.title;
                 article.content = response.content;
                 article.isdeleted = response.isdeleted;
                 article.categories = response.categories;
                 article.#categories.forEach((category) => {
-                    console.log(category);
                 });
                 if (!article.isdeleted) {
                     $("#article-title").html(article.title);
                     $("#article-content").html(article.content);
                 } else $("#article-title").html("Article has been deleted");
-
+                return article;
             },
             error: function (error) {
                 console.log(error);
@@ -85,8 +82,27 @@ export default class Article {
         });
     }
 
-    editArticle(id: number) {
-
+    editArticle(id: number, title: string, content: string, userId: number) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re/api/putArticle.php?id=" + id,
+            dataType: "json",
+            data: {
+                'article_id': id,
+                'title': title,
+                'content': content,
+                'user_id': userId
+            },
+            success: function (response) {
+                let okText = "Article modified successfully";
+                if (Array.isArray(response))
+                    $('#response').html(okText);
+                else $("#response").html('An error occurred');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     }
 
     deleteArticle(id: number) {

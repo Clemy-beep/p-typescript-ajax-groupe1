@@ -61,23 +61,20 @@ export default class Article {
             }
         });
     }
-    fetchArticle() {
+    static fetchArticle() {
         let id = window.location.search.split('=')[1];
-        console.log(id);
         $.ajax({
             type: "GET",
             url: "https://api.blog.quidam.re/api/getArticle.php?id=" + id,
             dataType: "JSON",
             success: function (response) {
+                var article = new Article();
                 response = response[0];
-                console.log(response);
-                let article = new Article(response.id, response.title, response.content, response.user_id, response.isdeleted, response.categories);
                 article.title = response.title;
                 article.content = response.content;
                 article.isdeleted = response.isdeleted;
                 article.categories = response.categories;
                 __classPrivateFieldGet(article, _Article_categories, "f").forEach((category) => {
-                    console.log(category);
                 });
                 if (!article.isdeleted) {
                     $("#article-title").html(article.title);
@@ -85,13 +82,35 @@ export default class Article {
                 }
                 else
                     $("#article-title").html("Article has been deleted");
+                return article;
             },
             error: function (error) {
                 console.log(error);
             }
         });
     }
-    editArticle(id) {
+    editArticle(id, title, content, userId) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re/api/putArticle.php?id=" + id,
+            dataType: "json",
+            data: {
+                'article_id': id,
+                'title': title,
+                'content': content,
+                'user_id': userId
+            },
+            success: function (response) {
+                let okText = "Article modified successfully";
+                if (Array.isArray(response))
+                    $('#response').html(okText);
+                else
+                    $("#response").html('An error occurred');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     }
     deleteArticle(id) {
         let conf = confirm("Are you sure you want to delete this article ?");
