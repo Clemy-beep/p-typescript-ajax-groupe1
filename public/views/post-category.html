@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../assets/style.css">
     <title>Post Category</title>
 </head>
 
@@ -16,10 +18,15 @@
                 <li><a href="./post-article.html">Post article</a></li>
                 <li><a href="./user-profile.html">User Profile</a></li>
                 <li><a href="./categories.html">Categories</a></li>
-                <li><a href="./post-category.html">Post Category</a></li>
+                <li><a href="post-category.html">Post Category</a></li>
             </ul>
         </nav>
     </header>
+    <h1>Post Category</h1>
+    <form method="post" action>
+        <input type="text" placeholder="Votre nouvelle catégorie" name="category" id="category" required>
+        <button id="submit-cat">Enregistrer</button>
+    </form>
+    <script src="../../dist/categories.js" type="module">
+    </script>
 </body>
-
-</html>

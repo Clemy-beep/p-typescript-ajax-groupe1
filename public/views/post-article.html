@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Post Article</title>
 </head>
 
@@ -14,13 +15,22 @@
         <nav>
             <ul>
                 <li><a href="../../index.html">All articles</a></li>
-                <li><a href="./post-article.html">Post article</a></li>
-                <li><a href="./user-profile.html">User Profile</a></li>
-                <li><a href="./categories.html">Categories</a></li>
-                <li><a href="./post-category.html">Post Category</a></li>
+                <li><a href="post-article.html">Post article</a></li>
+                <li><a href="user-profile.html">User Profile</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="post-category.html">Post Category</a></li>
             </ul>
         </nav>
     </header>
+    <form method="post">
+        <input type="text" placeholder="title" name="title" id="title" required>
+        <input type="number" placeholder="author" name="author" id="author" required><br>
+        <input type="textarea" placeholder="Votre article.." name="content" id="content" required>
+        <select name="category" id="category" required></select>
+        <button id="submit-art">Soumettre un article</button>
+    </form>
+    <div id="response"></div>
 </body>
+<script src="../../dist/post-article.js" type="module"></script>
 
 </html>

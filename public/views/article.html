@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../assets/style.css">
-    <title>Edit Article</title>
+    <title>Article</title>
 </head>
 
 <body>
@@ -22,21 +22,12 @@
             </ul>
         </nav>
     </header>
-    <form action="#" method="POST" id="modify">
-        <h1>modify an Article</h1>
-        <input hidden name="article-id" placeholder="article-id" id="article-id" value="">
-
-        <textarea style="display:block" name="titre" placeholder="titre" id="title"></textarea>
-
-        <textarea name="content" placeholder="content" id="content"></textarea>
-
-        <input type="hidden" name="user_id" placeholder="user_id" id="userId" value="">
-
-        <button id="edit">Edit article</button>
-    </form>
-    <div id="response"></div>
+    <h1 id="article-title"></h1>
+    <div id="article-content"></div>
+    <div id="article-categories"></div>
+    <button id="article-delete">Delete article</button>
+    <button id="article-edit">Edit article</button>
 </body>
-<script src="../../dist/put-articles.js" type="module">
-</script>
+<script src="../../dist/articles.js" type="module"></script>
 
 </html>

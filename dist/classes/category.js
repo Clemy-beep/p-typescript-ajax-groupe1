@@ -25,9 +25,49 @@ export class Category {
     set id(id) { __classPrivateFieldSet(this, _Category_id, id, "f"); }
     set label(label) { __classPrivateFieldSet(this, _Category_label, label, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Category_isdeleted, isdeleted, "f"); }
-    createCategory() { }
-    fetchCategory(id) { }
-    deleteCategory(id) { }
+    createCategory(label) {
+        console.log("test");
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re/api/postCategorie.php?label=" + label,
+            dataType: "JSON",
+            data: {
+                "label": label,
+            },
+            success: function (response) {
+                console.log(response);
+                console.log("test");
+                if (Array.isArray(response))
+                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
+                else
+                    alert("An error occurred.");
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    deleteCategory(id) {
+        let conf = confirm("Are you sure you want to delete this category ?");
+        if (conf)
+            $.ajax({
+                type: "POST",
+                url: "https://api.blog.quidam.re/api/deleteCategorie.php",
+                dataType: "JSON",
+                data: {
+                    'categorie_id': id
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log("test");
+                    $("#response").html('Category deleted');
+                    window.location.href = "http://127.0.0.1:5555/public/views/categories.html";
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
 }
 _Category_id = new WeakMap(), _Category_label = new WeakMap(), _Category_isdeleted = new WeakMap();
 //# sourceMappingURL=category.js.map

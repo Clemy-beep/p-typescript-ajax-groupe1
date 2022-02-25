@@ -43,7 +43,7 @@ export default class User {
                 console.log(error);
             }
         });
-    }
+
 }
 _User_userId = new WeakMap(), _User_username = new WeakMap();
 //# sourceMappingURL=user.js.map

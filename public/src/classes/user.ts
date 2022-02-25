@@ -11,7 +11,6 @@ export default class User{
     get username(): string {return this.#username ?? "";}
     set username(value: string) {this.#username = value;}
     set userId(userId : number) {this.#userId = userId;}
-
     static getUser() {
         $.ajax({
             type: "GET",
@@ -32,5 +31,5 @@ export default class User{
                 console.log(error);
             }
         })
-    }
+
 }
