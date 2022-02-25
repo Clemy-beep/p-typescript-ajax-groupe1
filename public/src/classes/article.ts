@@ -31,7 +31,29 @@ export default class Article {
     set isdeleted(isdeleted: boolean) { this.#isdeleted = isdeleted }
     set categories(categories: Category[]) { this.#categories }
 
-    createArticle() { }
+    createArticle(category: number, content: string, title: string, userId: number) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re//api/postArticle.php",
+            dataType: "json",
+            data: {
+                category: category,
+                content: content,
+                title: title,
+                userId: userId
+            },
+            success: function (response) {
+                console.log(response);
+                let okText = "Article successfully published."
+                if (Array.isArray(response))
+                    $("#response").html(okText);
+                else $("#response").html("An error occurred.")
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 
     fetchArticle() {
         let id: string = window.location.search.split('=')[1];

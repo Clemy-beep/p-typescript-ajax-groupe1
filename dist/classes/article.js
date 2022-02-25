@@ -37,7 +37,30 @@ export default class Article {
     set userId(userId) { __classPrivateFieldSet(this, _Article_userId, userId, "f"); }
     set isdeleted(isdeleted) { __classPrivateFieldSet(this, _Article_isdeleted, isdeleted, "f"); }
     set categories(categories) { __classPrivateFieldGet(this, _Article_categories, "f"); }
-    createArticle() { }
+    createArticle(category, content, title, userId) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.blog.quidam.re//api/postArticle.php",
+            dataType: "json",
+            data: {
+                category: category,
+                content: content,
+                title: title,
+                userId: userId
+            },
+            success: function (response) {
+                console.log(response);
+                let okText = "Article successfully published.";
+                if (Array.isArray(response))
+                    $("#response").html(okText);
+                else
+                    $("#response").html("An error occurred.");
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
     fetchArticle() {
         let id = window.location.search.split('=')[1];
         console.log(id);
