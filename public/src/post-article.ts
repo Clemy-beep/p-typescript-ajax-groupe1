@@ -1,3 +1,4 @@
+import article from "./classes/article.js";
 import Article from "./classes/article.js";
 import { Category } from "./classes/category.js";
 
@@ -32,7 +33,13 @@ $('#category').change(function (e: any) {
 
 $('#submit-art').on('click', (e: Event) => {
     e.preventDefault();
-    newArticle.createArticle(category.id, newArticle.content, newArticle.title, newArticle.userId);
+    let article = new Article();
+    article.title = <string>$("#title").val();
+    article.content = <string>$("#content").val();
+    article.userId = <number>$("#author").val();
+    article.category = <number>$("#category").val();
+    console.log(article);
+    article.createArticle(article.title, article.content, article.category, article.userId);
 })
 
 

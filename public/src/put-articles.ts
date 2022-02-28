@@ -10,7 +10,7 @@ $.ajax({
         response = response[0];
         article.title = response.title;
         article.content = response.content;
-        article.categories = response.categories;
+        article.category = response.categories;
         article.userId = response.userId;
         $('#article-id').val(article.id);
         $('#title').html(article.title);

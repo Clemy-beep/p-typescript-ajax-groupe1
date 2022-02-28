@@ -1,49 +1,74 @@
+* {
+    font-family: Montserra, sans-serif;
+}
+
 header nav ul {
     display: flex;
     list-style: none;
-    gap: 0.5em;
+
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
 }
-/* ___________________________début_categories.html________________________________________ */
-#category-list {
-    position: absolute;
-    margin: 1em;
-    top: 10%;
-  }
-  .button {
-    border: none;
-    display: block;
+
+header {
+    height: 80px;
+    background-color: #63e6be;
+    margin: -16px;
+    color: white !important;
+}
+
+header nav ul li {
+    line-height: 80px;
+}
+
+header nav ul li a {
+    color: white !important;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+header nav ul li a:hover {
+    font-size: 22px;
+    text-decoration: overline;
+}
+
+h1 {
+    padding: 2em;
     text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    outline: none;
-    overflow: hidden;
+    text-decoration: underline;
+    text-decoration-color: #63e6be;
+    text-decoration-thickness: 4px;
+}
+
+.article-link {
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0px 0px 4px 2px #00000025;
+    width: fit-content;
+    max-width: 800px;
+    margin: 16px auto;
+    border-radius: 16px;
     position: relative;
-    color: #eeeeee;
-    font-weight: 600;
-    font-size: 15px;
-    background-color: #153f00;
-    padding: 15px 50px;
-    margin: 0 auto;
-  }
-  .button span {
-    position: relative;
-    z-index: 1;
-  }
-  .button:after {
-    content: "";
+}
+
+.article-link:hover {
+    padding: 18px;
+    box-shadow: 0px 0px 6px 3px #00000025;
+}
+
+.article-link:hover::after {
+    background-color: #e6fcf5;
+    content: " ";
+    height: 80%;
     position: absolute;
     left: 0;
-    top: 0;
-    height: 470%;
-    width: 140%;
-    background: #52b71f;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-transform: translateX(-100%) translateY(-25%) rotate(45deg);
-    transform: translateX(-100%) translateY(-25%) rotate(45deg);
-  }
-  .button:hover:after {
-    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
-    transform: translateX(-9%) translateY(-25%) rotate(45deg);
-  }
-  /* ___________________________fin_categories.html________________________________________ */
+    margin-left: -1rem;
+    top: 20%;
+    width: calc(100% + 0.5rem);
+    z-index: -1;
+}
+

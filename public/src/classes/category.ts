@@ -17,24 +17,25 @@ export class Category {
     set label(label: string) { this.#label = label }
     set isdeleted(isdeleted: boolean) { this.#isdeleted = isdeleted }
 
-
-
-
     createCategory(label: string) {
+        let formData = new FormData();
+        formData.append('label', label);
         console.log("test");
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/postCategorie.php?label=" + label,
             dataType: "JSON",
-            data: {
-                "label": label,
-            },
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function (response: any) {
                 console.log(response);
                 console.log("test");
                 if (Array.isArray(response))
+                    alert("An error occurred.")
+                else
                     window.location.href = "http://127.0.0.1:5555/public/views/categories.html"
-                else alert("An error occurred.")
+
             },
             error: function (error) {
                 console.log(error)
@@ -44,14 +45,16 @@ export class Category {
 
     deleteCategory(id: number) {
         let conf = confirm("Are you sure you want to delete this category ?")
-        if (conf)
+        if (conf) {
+            let formData = new FormData();
+            formData.append('categorie_id', id.toString());
             $.ajax({
                 type: "POST",
                 url: "https://api.blog.quidam.re/api/deleteCategorie.php",
                 dataType: "JSON",
-                data: {
-                    'categorie_id': id
-                },
+                data: formData,
+                processData:false,
+                contentType: false,
                 success: function (response: any) {
                     console.log(response);
                     console.log("test");
@@ -62,5 +65,6 @@ export class Category {
                     console.log(error)
                 }
             });
+        }
     }
 }

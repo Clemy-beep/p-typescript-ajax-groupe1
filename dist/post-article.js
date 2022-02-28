@@ -29,6 +29,12 @@ $('#category').change(function (e) {
 });
 $('#submit-art').on('click', (e) => {
     e.preventDefault();
-    newArticle.createArticle(category.id, newArticle.content, newArticle.title, newArticle.userId);
+    let article = new Article();
+    article.title = $("#title").val();
+    article.content = $("#content").val();
+    article.userId = $("#author").val();
+    article.category = $("#category").val();
+    console.log(article);
+    article.createArticle(article.title, article.content, article.category, article.userId);
 });
 //# sourceMappingURL=post-article.js.map

@@ -5,16 +5,16 @@ export default class Article {
     #title: string;
     #content: string;
     #userId: number;
-    #categories: Category[];
+    #category: number;
     #isdeleted: boolean;
 
-    constructor(id?: number, title?: string, content?: string, userId?: number, isdeleted?: boolean, categories?: Category[]) {
+    constructor(id?: number, title?: string, content?: string, userId?: number, isdeleted?: boolean, category?: number) {
         this.#id = id ?? 0;
         this.#title = title ?? "";
         this.#content = content ?? "";
         this.#userId = userId ?? 0;
         this.#isdeleted = isdeleted ?? false;
-        this.#categories = categories ?? [];
+        this.#category = category ?? 1;
     }
 
     get id() { return this.#id; }
@@ -22,30 +22,32 @@ export default class Article {
     get content() { return this.#content; }
     get isdeleted() { return this.#isdeleted; }
     get userId() { return this.#userId; }
-    get categories() { return this.#categories }
+    get category() { return this.#category }
 
     set id(id: number) { this.#id = id; }
     set title(title: string) { this.#title = title }
     set content(content: string) { this.#content = content }
     set userId(userId: number) { this.#userId = userId }
     set isdeleted(isdeleted: boolean) { this.#isdeleted = isdeleted }
-    set categories(categories: Category[]) { this.#categories }
+    set category(category: number) { this.#category = category }
 
-    createArticle(category: number, content: string, title: string, userId: number) {
+    createArticle(title: string, content: string, category: number, userId: number) {
+        let formData = new FormData();
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("categorie", category.toString());
+        formData.append("user_id", userId.toString());
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re//api/postArticle.php",
             dataType: "json",
-            data: {
-                category: category,
-                content: content,
-                title: title,
-                userId: userId
-            },
+            processData: false,
+            contentType: false,
+            data: formData,
             success: function (response) {
                 console.log(response);
                 let okText = "Article successfully published."
-                if (Array.isArray(response))
+                if (!Array.isArray(response))
                     $("#response").html(okText);
                 else $("#response").html("An error occurred.")
             },
@@ -55,21 +57,19 @@ export default class Article {
         });
     }
 
-    static fetchArticle(): void {
-        let id: string = window.location.search.split('=')[1];
+    static fetchArticle(id: number): void {
         $.ajax({
             type: "GET",
             url: "https://api.blog.quidam.re/api/getArticle.php?id=" + id,
             dataType: "JSON",
             success: function (response: any) {
-                var article = new Article();
+                let article = new Article();
                 response = response[0];
+                console.log(response);
                 article.title = response.title;
                 article.content = response.content;
                 article.isdeleted = response.isdeleted;
-                article.categories = response.categories;
-                article.#categories.forEach((category) => {
-                });
+                article.category = response.categories;
                 if (!article.isdeleted) {
                     $("#article-title").html(article.title);
                     $("#article-content").html(article.content);
@@ -83,21 +83,28 @@ export default class Article {
     }
 
     editArticle(id: number, title: string, content: string, userId: number) {
+        let formData = new FormData();
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('user_id', userId.toString());
+        formData.append('article_id', id.toString());
         $.ajax({
             type: "POST",
             url: "https://api.blog.quidam.re/api/putArticle.php?id=" + id,
             dataType: "json",
-            data: {
-                'article_id': id,
-                'title': title,
-                'content': content,
-                'user_id': userId
-            },
+            contentType: false,
+            data: formData,
+            processData: false,
             success: function (response) {
+                console.log(response);
                 let okText = "Article modified successfully";
-                if (Array.isArray(response))
-                    $('#response').html(okText);
-                else $("#response").html('An error occurred');
+                if (response.message == "Modification effectué") {
+                    alert(okText);
+                    window.location.href = "http://127.0.0.1:5555/public/views/article.html?id=" + id;
+                }
+                else {
+                    $("#response").html('An error occurred')
+                }
             },
             error: function (error) {
                 console.log(error);
@@ -106,18 +113,22 @@ export default class Article {
     }
 
     deleteArticle(id: number) {
-        let conf = confirm("Are you sure you want to delete this article ?")
+        let formData = new FormData();
+        formData.append('user_id', id.toString());
+        let conf = confirm("Are you sure you want to delete this article ?");
         if (conf)
             $.ajax({
                 type: "POST",
                 url: "https://api.blog.quidam.re/api/deleteArticle.php?id=" + id,
                 dataType: "JSON",
-                data: {
-                    'user_id': 7
-                },
+                data: formData,
                 success: function (response: any) {
                     console.log(response);
-                    window.location.href = "http://127.0.0.1:5555/index.html"
+                    if (Array.isArray(response)) {
+                        alert("Article deleted successfully");
+                        window.location.href = "http://127.0.0.1:5555/index.html"
+                    }
+                    else alert("Article not deleted. An error occurred.");
                 },
                 error: function (error) {
                     console.log(error);
