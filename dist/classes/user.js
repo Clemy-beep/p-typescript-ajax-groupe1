@@ -21,8 +21,29 @@ export default class User {
     get username() { return __classPrivateFieldGet(this, _User_username, "f") ?? ""; }
     set username(value) { __classPrivateFieldSet(this, _User_username, value, "f"); }
     set userId(userId) { __classPrivateFieldSet(this, _User_userId, userId, "f"); }
-    fetchUser(id) {
-    }
+    static getUser() {
+        $.ajax({
+            type: "GET",
+            url: "https://api.blog.quidam.re/api/getUser.php",
+            dataType: "JSON",
+            success: function (response) {
+                console.log(response);
+                if (response.length > 0) {
+                    console.log(response);
+                    response.forEach((utilisateur) => {
+                        let newUser = new User(utilisateur.userId);
+                        let html = `<a style="display:block" href="./public/views/user-profile.html?id=${utilisateur.userId}">${utilisateur.username}</a>`;
+                        $('#Username')?.append(html);
+                    });
+                }
+                else
+                    $('#Username').html('no user found');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
 }
 _User_userId = new WeakMap(), _User_username = new WeakMap();
 //# sourceMappingURL=user.js.map

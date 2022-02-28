@@ -1,5 +1,6 @@
 import Article from "./article.js";
-import { Category } from "./category.js"
+import {Category} from "./category.js"
+import User from "./user.js";
 
 export default class FetchMultiple {
     static fetchArticles() {
